@@ -57,7 +57,10 @@ export const sentCartData = (cart) => {
         "https://react-http-926be-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
         {
           method: "PUT",
-          body: JSON.stringify(cart),
+            body: JSON.stringify({
+                items: cart.items,
+                totalQuantity: cart.totalQuantity
+            }),
         }
       );
       if (!response.ok) throw new Error("Sending cart data failed");
