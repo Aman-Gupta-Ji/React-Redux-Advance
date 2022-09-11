@@ -20,8 +20,8 @@ export const fetchCartData = () => {
       dispatch(
         uiActions.showNotification({
           status: "pending",
-          title: "Sending...",
-          message: "Sending cart data!",
+          title: "Fetching...",
+          message: "Fetching cart data!",
         })
       );
       dispatch(
@@ -35,7 +35,7 @@ export const fetchCartData = () => {
         uiActions.showNotification({
           status: "error",
           title: "Error!",
-          message: "Sending cart data failed!",
+          message: "Failed to fetch Cart Data!",
         })
       );
     }
@@ -57,10 +57,10 @@ export const sentCartData = (cart) => {
         "https://react-http-926be-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
         {
           method: "PUT",
-            body: JSON.stringify({
-                items: cart.items,
-                totalQuantity: cart.totalQuantity
-            }),
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
         }
       );
       if (!response.ok) throw new Error("Sending cart data failed");
